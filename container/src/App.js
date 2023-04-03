@@ -21,11 +21,11 @@ export const App = () => {
     <BrowserRouter>
       <StylesProvider generateClassName={generateClassName}>
         <div>
-          <Header isSignin={isSignin} />
+          <Header isSignin={isSignin} onSignOut={() => setIsSignin(false)} />
           <Suspense fallback={<Progress />}>
             <Switch>
               <Route path="/auth">
-                <AuthLazy onSignin={setIsSignin} />
+                <AuthLazy onSignin={() => setIsSignin(true)} />
               </Route>
               <Route path="/" component={MarketingLazy} />
             </Switch>
